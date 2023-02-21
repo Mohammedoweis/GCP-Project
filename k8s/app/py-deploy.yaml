@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment
+spec:
+  selector:
+    matchLabels:
+      name: python-pod
+      app: python-demo-app
+  template:
+    metadata:
+      labels:
+        name: python-pod
+        app: python-demo-app
+    spec:
+      containers:
+      - name: myapp
+        image: gcr.io/iti-owies/python-demo
+        resources:
+        ports:
+        - containerPort: 8000
+      
